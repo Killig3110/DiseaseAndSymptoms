@@ -8,10 +8,14 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import ConfusionMatrixDisplay
 import joblib
+from sklearn.utils import shuffle
 
 # 1. Đọc dữ liệu
 symptom_data = pd.read_csv("DiseaseAndSymptoms.csv")
 precaution_data = pd.read_csv("Disease precaution.csv")
+
+# 2. Trộn dữ liệu để đảm bảo ngẫu nhiên
+symptom_data = shuffle(symptom_data, random_state=42) # Trộn dữ liệu để đảm bảo ngẫu nhiên và phân phối đồng đều các bệnh
 
 # 2. Xử lý dữ liệu triệu chứng
 symptom_data = symptom_data.fillna('')
@@ -76,9 +80,17 @@ def predict_disease(symptoms):
 all_symptoms = pd.concat([symptom_data[col] for col in symptom_columns])
 symptom_counts = all_symptoms.value_counts()
 
+# 10. Vẽ biểu đồ tần suất triệu chứng (Đã loại bỏ giá trị rỗng)
+all_symptoms = pd.concat([symptom_data[col] for col in symptom_columns])
+all_symptoms = all_symptoms[all_symptoms != '']  # Loại bỏ các giá trị rỗng
+
+# Tính tần suất xuất hiện
+symptom_counts = all_symptoms.value_counts()
+
+# Vẽ lại biểu đồ
 plt.figure(figsize=(12, 6))
 symptom_counts[:20].plot(kind='bar', color='orange')
-plt.title("Tần suất xuất hiện của các triệu chứng")
+plt.title("Tần suất xuất hiện của các triệu chứng (Đã loại bỏ giá trị rỗng)")
 plt.xlabel("Triệu chứng")
 plt.ylabel("Số lần xuất hiện")
 plt.xticks(rotation=45)
@@ -134,10 +146,3 @@ plt.show()
 # 16. Lưu mô hình để sử dụng sau
 joblib.dump(model, "disease_decision_tree_model.pkl")
 print("Mô hình đã được lưu vào file 'disease_decision_tree_model.pkl'.")
-
-# 17. Dự đoán với triệu chứng mới
-new_symptoms = ["itching", "skin_rash", "nodal_skin_eruptions", "dischromic _patches", ""]
-predicted_disease, prevention_measures = predict_disease(new_symptoms)
-print("Triệu chứng:", new_symptoms)
-print("Bệnh dự đoán:", predicted_disease)
-print("Biện pháp phòng ngừa:", prevention_measures)

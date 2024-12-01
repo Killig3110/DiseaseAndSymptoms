@@ -1,0 +1,53 @@
+Báo cáo Phân Tích Kết Quả
+Tổng số dự đoán: 984
+Số dự đoán đúng: 899
+Độ chính xác tổng thể: 91.36%
+
+Tỷ lệ dự đoán đúng theo từng bệnh:
+True Disease
+(vertigo) Paroymsal  Positional Vertigo    1.000000
+AIDS                                       1.000000
+Acne                                       1.000000
+Alcoholic hepatitis                        1.000000
+Allergy                                    1.000000
+Arthritis                                  1.000000
+Bronchial Asthma                           1.000000
+Cervical spondylosis                       1.000000
+Chicken pox                                0.333333
+Chronic cholestasis                        0.133333
+Common Cold                                1.000000
+Dengue                                     1.000000
+Diabetes                                   1.000000
+Dimorphic hemmorhoids(piles)               1.000000
+Drug Reaction                              0.041667
+Fungal infection                           0.157895
+GERD                                       1.000000
+Gastroenteritis                            1.000000
+Heart attack                               1.000000
+Hepatitis B                                1.000000
+Hepatitis C                                1.000000
+Hepatitis D                                1.000000
+Hepatitis E                                1.000000
+Hypertension                               1.000000
+Hyperthyroidism                            1.000000
+Hypoglycemia                               1.000000
+Hypothyroidism                             1.000000
+Impetigo                                   0.833333
+Jaundice                                   0.210526
+Malaria                                    1.000000
+Migraine                                   1.000000
+Osteoarthristis                            1.000000
+Paralysis (brain hemorrhage)               1.000000
+Peptic ulcer diseae                        1.000000
+Pneumonia                                  1.000000
+Psoriasis                                  1.000000
+Tuberculosis                               1.000000
+Typhoid                                    1.000000
+Urinary tract infection                    1.000000
+Varicose veins                             1.000000
+hepatitis A                                1.000000
+
+Nguyên nhân tiềm ẩn:
+- Dữ liệu không đồng đều: Một số bệnh có quá ít mẫu dữ liệu so với các bệnh khác.
+- Triệu chứng dễ gây nhầm lẫn: Các triệu chứng phổ biến trong dự đoán sai bao gồm 0, 32, 35, 14, 13.
+- Các bệnh thường bị dự đoán sai: Bao gồm Drug Reaction, Fungal infection, Jaundice.
