@@ -10,6 +10,10 @@ from sklearn.metrics import ConfusionMatrixDisplay
 import joblib
 from sklearn.utils import shuffle
 
+from sklearn.metrics import roc_curve, auc
+from sklearn.preprocessing import label_binarize
+import numpy as np
+
 # 1. Đọc dữ liệu
 symptom_data = pd.read_csv("DiseaseAndSymptoms.csv")
 precaution_data = pd.read_csv("Disease precaution.csv")
@@ -40,6 +44,7 @@ X_train, X_test, y_train, y_test = train_test_split(X_resampled, y_resampled, te
 # 6. Huấn luyện mô hình với các tham số tối ưu
 model = DecisionTreeClassifier(
     random_state=42,
+    criterion='gini',
     max_depth=15,
     min_samples_split=5,
     min_samples_leaf=2

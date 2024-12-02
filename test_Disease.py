@@ -6,6 +6,11 @@ from sklearn.preprocessing import LabelEncoder
 from joblib import load
 import matplotlib.pyplot as plt
 
+from sklearn.metrics import roc_curve, auc
+from sklearn.preprocessing import label_binarize
+import numpy as np
+
+
 # 1. Tải mô hình đã lưu
 model = load("disease_decision_tree_model.pkl")  # Tải mô hình từ file đã lưu
 
@@ -60,6 +65,15 @@ ConfusionMatrixDisplay.from_estimator(
     model, X_new_test, y_new_test_encoded, display_labels=label_encoder.classes_, cmap='viridis'
 )
 plt.title("Ma trận nhầm lẫn trên tập kiểm tra")
+plt.show()
+
+# Phân tích tầm quan trọng của các triệu chứng
+feature_importance = model.feature_importances_
+plt.figure(figsize=(10, 6))
+plt.barh(symptom_columns, feature_importance, color='skyblue')
+plt.title("Tầm quan trọng của các triệu chứng")
+plt.xlabel("Mức độ quan trọng")
+plt.ylabel("Triệu chứng")
 plt.show()
 
 # 14. Lưu kết quả phân loại
