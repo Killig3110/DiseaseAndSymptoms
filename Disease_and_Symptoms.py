@@ -81,10 +81,6 @@ def predict_disease(symptoms):
     precautions = precaution_data[precaution_data['Disease'] == disease_name].iloc[0, 1:].dropna().values.tolist()
     return disease_name, precautions
 
-# 10. Vẽ biểu đồ tần suất triệu chứng
-all_symptoms = pd.concat([symptom_data[col] for col in symptom_columns])
-symptom_counts = all_symptoms.value_counts()
-
 # 10. Vẽ biểu đồ tần suất triệu chứng (Đã loại bỏ giá trị rỗng)
 all_symptoms = pd.concat([symptom_data[col] for col in symptom_columns])
 all_symptoms = all_symptoms[all_symptoms != '']  # Loại bỏ các giá trị rỗng
