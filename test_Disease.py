@@ -60,13 +60,6 @@ y_new_pred = model.predict(X_new_test)
 print("Accuracy on Test Data:", accuracy_score(y_new_test_encoded, y_new_pred))
 print("Classification Report:\n", classification_report(y_new_test_encoded, y_new_pred, target_names=label_encoder.classes_))
 
-# 13. Vẽ ma trận nhầm lẫn
-ConfusionMatrixDisplay.from_estimator(
-    model, X_new_test, y_new_test_encoded, display_labels=label_encoder.classes_, cmap='viridis'
-)
-plt.title("Ma trận nhầm lẫn trên tập kiểm tra")
-plt.show()
-
 # Phân tích tầm quan trọng của các triệu chứng
 feature_importance = model.feature_importances_
 plt.figure(figsize=(10, 6))

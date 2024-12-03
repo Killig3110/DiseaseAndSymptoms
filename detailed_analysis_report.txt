@@ -47,7 +47,99 @@ Urinary tract infection                    1.000000
 Varicose veins                             1.000000
 hepatitis A                                1.000000
 
+Các bệnh thường bị dự đoán sai:
+True Disease
+Drug Reaction          23
+Fungal infection       16
+Jaundice               15
+Chicken pox            14
+Chronic cholestasis    13
+Impetigo                4
+
+Các bệnh thường bị dự đoán sai thành:
+Predicted Disease
+Gastroenteritis                            17
+(vertigo) Paroymsal  Positional Vertigo    16
+Hepatitis C                                15
+Hepatitis E                                14
+Jaundice                                    9
+Peptic ulcer diseae                         8
+Heart attack                                4
+Malaria                                     1
+Paralysis (brain hemorrhage)                1
+
+Triệu chứng phổ biến trong các dự đoán sai (tên gốc):
+yellowish_skin          107.0
+skin_rash                51.0
+high_fever               32.0
+fatigue                  29.0
+vomiting                 28.0
+loss_of_appetite         26.0
+abdominal_pain           25.0
+spotting_ urination      22.0
+burning_micturition      21.0
+stomach_pain             20.0
+swelled_lymph_nodes      14.0
+lethargy                 14.0
+headache                 14.0
+dark_urine               14.0
+red_spots_over_body      14.0
+mild_fever               14.0
+malaise                  14.0
+nodal_skin_eruptions     14.0
+dischromic _patches      13.0
+yellowing_of_eyes        13.0
+nausea                   13.0
+weight_loss              12.0
+blister                   4.0
+red_sore_around_nose      4.0
+yellow_crust_ooze         4.0
+
+Phân phối số mẫu dữ liệu theo bệnh:
+True Disease
+hepatitis A                                34
+Bronchial Asthma                           33
+AIDS                                       30
+Dimorphic hemmorhoids(piles)               29
+Hepatitis E                                29
+GERD                                       28
+Pneumonia                                  28
+Hepatitis B                                27
+Hypoglycemia                               26
+Dengue                                     26
+Hepatitis C                                26
+Urinary tract infection                    26
+Tuberculosis                               25
+Hypertension                               25
+Migraine                                   25
+Gastroenteritis                            25
+Alcoholic hepatitis                        25
+Drug Reaction                              24
+Allergy                                    24
+Hyperthyroidism                            24
+Acne                                       24
+Impetigo                                   24
+Paralysis (brain hemorrhage)               24
+Hepatitis D                                23
+Arthritis                                  23
+Common Cold                                23
+Cervical spondylosis                       23
+Heart attack                               23
+Osteoarthristis                            22
+Psoriasis                                  22
+Malaria                                    22
+Varicose veins                             22
+Hypothyroidism                             21
+Chicken pox                                21
+Diabetes                                   21
+Jaundice                                   19
+Typhoid                                    19
+Fungal infection                           19
+(vertigo) Paroymsal  Positional Vertigo    18
+Peptic ulcer diseae                        17
+Chronic cholestasis                        15
+
 Nguyên nhân tiềm ẩn:
 - Dữ liệu không đồng đều: Một số bệnh có quá ít mẫu dữ liệu so với các bệnh khác.
-- Triệu chứng dễ gây nhầm lẫn: Các triệu chứng phổ biến trong dự đoán sai bao gồm 0, 32, 35, 14, 13.
+- Triệu chứng dễ gây nhầm lẫn: Các triệu chứng phổ biến trong dự đoán sai bao gồm  yellowish_skin,  skin_rash,  high_fever,  fatigue,  vomiting.
 - Các bệnh thường bị dự đoán sai: Bao gồm Drug Reaction, Fungal infection, Jaundice.

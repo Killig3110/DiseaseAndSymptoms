@@ -51,10 +51,93 @@ model = DecisionTreeClassifier(
 )
 model.fit(X_train, y_train)
 
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Vẽ biểu đồ đường sau khi làm sạch dữ liệu
+def classification_report_to_csv_and_plot(report, output_path="classification_report.csv"):
+    # Chuyển classification report thành dataframe
+    report_data = []
+    for label, metrics in report.items():
+        if isinstance(metrics, dict):  # Loại bỏ các giá trị không liên quan
+            metrics['label'] = label
+            report_data.append(metrics)
+    
+    df = pd.DataFrame(report_data)
+    
+    # Xóa cột không cần thiết
+    if "" in df.columns:
+        df = df.drop(columns=[""])  # Xóa cột "" nếu tồn tại
+    
+    # Lưu kết quả ra file CSV
+    df.to_csv(output_path, index=False)
+    print(f"Classification Report đã được lưu vào {output_path}")
+    
+    # Vẽ biểu đồ đường
+    df = df[df['label'] != 'accuracy']  # Loại bỏ hàng tổng kết nếu có
+    labels = df['label']
+    plt.figure(figsize=(20, 8))  # Tăng kích thước để dễ hiển thị hơn
+    
+    plt.plot(labels, df['precision'], marker='o', label="Precision", linestyle='-')
+    plt.plot(labels, df['recall'], marker='o', label="Recall", linestyle='--')
+    plt.plot(labels, df['f1-score'], marker='o', label="F1-Score", linestyle=':')
+    
+    plt.title("Precision, Recall và F1-Score theo các lớp")
+    plt.xlabel("Lớp (Label)")
+    plt.ylabel("Giá trị")
+    plt.xticks(rotation=75, fontsize=8, ha='right')  # Xoay và thu nhỏ font chữ
+    plt.legend()
+    plt.grid()
+    plt.tight_layout()
+    plt.show()
+
+# Vẽ biểu đồ đường sau khi làm sạch dữ liệu
+def classification_report_to_csv_and_plot(report, output_path="classification_report.csv"):
+    # Chuyển classification report thành dataframe
+    report_data = []
+    for label, metrics in report.items():
+        if isinstance(metrics, dict):  # Loại bỏ các giá trị không liên quan
+            metrics['label'] = label
+            report_data.append(metrics)
+    
+    df = pd.DataFrame(report_data)
+    
+    # Xóa cột không cần thiết
+    if "" in df.columns:
+        df = df.drop(columns=[""])  # Xóa cột "" nếu tồn tại
+    
+    # Lưu kết quả ra file CSV
+    df.to_csv(output_path, index=False)
+    print(f"Classification Report đã được lưu vào {output_path}")
+    
+    # Vẽ biểu đồ đường
+    df = df[df['label'] != 'accuracy']  # Loại bỏ hàng tổng kết nếu có
+    labels = df['label']
+    plt.figure(figsize=(20, 8))  # Tăng kích thước để dễ hiển thị hơn
+    
+    plt.plot(labels, df['precision'], marker='o', label="Precision", linestyle='-')
+    plt.plot(labels, df['recall'], marker='o', label="Recall", linestyle='--')
+    plt.plot(labels, df['f1-score'], marker='o', label="F1-Score", linestyle=':')
+    
+    plt.title("Precision, Recall và F1-Score theo các lớp")
+    plt.xlabel("Lớp (Label)")
+    plt.ylabel("Giá trị")
+    plt.xticks(rotation=75, fontsize=8, ha='right')  # Xoay và thu nhỏ font chữ
+    plt.legend()
+    plt.grid()
+    plt.tight_layout()
+    plt.show()
+
 # 7. Đánh giá mô hình
 y_pred = model.predict(X_test)
 print("Accuracy on Test Set:", accuracy_score(y_test, y_pred))
+
+# Classification Report
+report = classification_report(y_test, y_pred, target_names=label_encoder.classes_, output_dict=True)
 print("Classification Report:\n", classification_report(y_test, y_pred, target_names=label_encoder.classes_))
+
+# Lưu Classification Report vào file CSV và vẽ biểu đồ
+classification_report_to_csv_and_plot(report, "classification_report.csv")
 
 # 8. Đánh giá trên tập validation (kiểm tra overfitting)
 X_train_new, X_val, y_train_new, y_val = train_test_split(X_train, y_train, test_size=0.2, random_state=42)
@@ -115,24 +198,34 @@ plt.title("Độ chính xác của mô hình Decision Tree")
 plt.ylabel("Accuracy")
 plt.show()
 
-# 13. Vẽ ma trận nhầm lẫn
-ConfusionMatrixDisplay.from_estimator(
-    model, X_test, y_test, display_labels=label_encoder.classes_, cmap='viridis'
+# 13. Vẽ ma trận nhầm lẫn với chỉnh sửa trục X
+fig, ax = plt.subplots(figsize=(20, 20))  # Tăng kích thước hình để hiển thị rõ hơn
+disp = ConfusionMatrixDisplay.from_estimator(
+    model,
+    X_test,
+    y_test,
+    display_labels=label_encoder.classes_,
+    cmap='viridis',
+    ax=ax
 )
 plt.title("Ma trận nhầm lẫn của mô hình")
+plt.xticks(rotation=90, fontsize=10, ha='right')  # Xoay nhãn trục X 90 độ và căn phải
+plt.yticks(fontsize=10)  # Điều chỉnh font chữ cho trục Y
+plt.tight_layout()  # Đảm bảo đồ thị không bị cắt
 plt.show()
 
-# 14. Vẽ cây quyết định
-plt.figure(figsize=(20, 10))
+# 14. Vẽ cây quyết định (được cải thiện)
+plt.figure(figsize=(25, 15))  # Tăng kích thước biểu đồ
 plot_tree(
-    model, 
-    feature_names=symptom_columns, 
-    class_names=label_encoder.classes_, 
-    filled=True, 
-    rounded=True, 
-    fontsize=10
+    model,
+    feature_names=symptom_columns,  # Tên các triệu chứng
+    class_names=label_encoder.classes_,  # Tên các lớp (bệnh)
+    filled=True,  # Tô màu cho các nút
+    rounded=True,  # Các nút tròn hơn
+    fontsize=8  # Giảm kích thước font để hiển thị vừa phải
 )
-plt.title("Cây Quyết Định Dự Đoán Bệnh")
+plt.title("Cây Quyết Định Dự Đoán Bệnh", fontsize=14)  # Tăng kích thước tiêu đề
+plt.tight_layout()  # Đảm bảo không gian giữa các thành phần không bị cắt
 plt.show()
 
 # 15. Phân tích tầm quan trọng của triệu chứng
