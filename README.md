@@ -85,9 +85,6 @@ pip install -r requirements.txt
 - Độ chính xác trên tập kiểm tra: `99.89%`
 - Độ chính xác trên tập validation: `99.49%`
 
-### Ma Trận Nhầm Lẫn
-![ma_tran_nham_lan_test](https://github.com/user-attachments/assets/ad79a0b5-9b33-4c07-bef9-b92c8350f186)
-
 ### Tầm Quan Trọng Của Triệu Chứng
 ![tam_quan_trong_cua_trieu_chung_test](https://github.com/user-attachments/assets/43ab3ec1-feba-4eb2-bcbf-c529c1512455)
 
