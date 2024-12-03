@@ -51,7 +51,7 @@ pip install -r requirements.txt
 ### 2. Chạy Dự Án
 1. **Xử lý dữ liệu và kiểm tra:**
    ```bash
-   python process_and_check_data.py
+   python test_Disease.py
    ```
 
 2. **Huấn luyện mô hình:**
@@ -63,6 +63,16 @@ pip install -r requirements.txt
    ```bash
    python analyze_results.py
    ```
+
+4. **Entropy và Giini Index**
+   ```bash
+   python symptom_ir_results.py
+   ```
+
+5. **Khôi phục dữ liệu và mapping dữ liệu**
+   ```bash
+   python process_and_check_data.py
+   ```  
 
 ### 3. Output
 - **classification_results.csv:** Kết quả dự đoán bệnh.
@@ -76,10 +86,13 @@ pip install -r requirements.txt
 - Độ chính xác trên tập validation: `99.49%`
 
 ### Ma Trận Nhầm Lẫn
-![Ma Trận Nhầm Lẫn](ma_tran_nham_lan_test.png)
+![ma_tran_nham_lan_test](https://github.com/user-attachments/assets/ad79a0b5-9b33-4c07-bef9-b92c8350f186)
 
 ### Tầm Quan Trọng Của Triệu Chứng
-![Tầm Quan Trọng Triệu Chứng](tam_quan_trong_cua_trieu_chung.png)
+![tam_quan_trong_cua_trieu_chung_test](https://github.com/user-attachments/assets/43ab3ec1-feba-4eb2-bcbf-c529c1512455)
+
+### Tỉ lệ dự đoán đúng theo từng bệnh
+![ti_le_du_doan_dung](https://github.com/user-attachments/assets/593a0d1e-afb7-4f04-ab7f-747129f007e5)
 
 ## 📚 Tài Liệu Tham Khảo
 
