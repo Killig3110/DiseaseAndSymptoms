@@ -99,5 +99,3 @@ pip install -r requirements.txt
 4. Kaggle Dataset, ["Disease and Symptoms Dataset"](https://www.kaggle.com/datasets/choongqianzheng/disease-and-symptoms-dataset).
 
 ---
-
-Bạn có thể chỉnh sửa nội dung này phù hợp với yêu cầu và phong cách của dự án. Nếu cần thêm hình ảnh hoặc chi tiết, hãy bổ sung tương ứng.
